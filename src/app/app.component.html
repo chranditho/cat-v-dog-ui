@@ -1,2 +1,11 @@
 <h1>Cat v Dog</h1>
+<div class="upload-container">
+  <input (change)="onFileSelected($event)" type="file" />
+  <button (click)="onUpload()" [disabled]="!selectedFile" color="primary" mat-raised-button>Upload</button>
+</div>
+@if (imageUrl) {
+
+  <img [src]="imageUrl" [width]="200" [height]="200" alt="Uploaded Image" class="uploaded-image" />
+}
+
 <router-outlet></router-outlet>
