@@ -1,13 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
 import { NgOptimizedImage } from '@angular/common';
-import { MatButton } from '@angular/material/button';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   standalone: true,
-  imports: [NxWelcomeComponent, RouterModule, NgOptimizedImage, MatButton],
+  imports: [RouterModule, NgOptimizedImage],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -15,12 +12,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class AppComponent {
   selectedFile: File | null = null;
   imageUrl: string | ArrayBuffer | null = null;
-
-  constructor(private _snackBar: MatSnackBar) {}
-
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
-  }
 
   onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -38,7 +29,6 @@ export class AppComponent {
     if (this.selectedFile) {
       const formData = new FormData();
       formData.append('image', this.selectedFile);
-      this.openSnackBar('Uploaded Image', 'Close');
     }
   }
 }
