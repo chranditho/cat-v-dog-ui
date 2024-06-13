@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
+import { NavigationComponent, ToastComponent } from '@cat-v-dog-ui/ui';
 
 @Component({
   standalone: true,
-  imports: [RouterModule, NgOptimizedImage],
+  imports: [
+    RouterModule,
+    NgOptimizedImage,
+    NavigationComponent,
+    ToastComponent,
+  ],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -12,6 +18,7 @@ import { NgOptimizedImage } from '@angular/common';
 export class AppComponent {
   selectedFile: File | null = null;
   imageUrl: string | ArrayBuffer | null = null;
+  showToaster = false;
 
   onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -29,6 +36,14 @@ export class AppComponent {
     if (this.selectedFile) {
       const formData = new FormData();
       formData.append('image', this.selectedFile);
+      this.showToast();
     }
+  }
+
+  private showToast() {
+    this.showToaster = true;
+    setTimeout(() => {
+      this.showToaster = false;
+    }, 5000);
   }
 }

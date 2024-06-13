@@ -1,11 +1,16 @@
-<h1>Cat v Dog</h1>
-<div class="upload-container">
-  <input (change)="onFileSelected($event)" type="file" />
-  <button (click)="onUpload()" [disabled]="!selectedFile" color="primary" mat-raised-button>Upload</button>
+<lib-navigation />
+<div class="container flex justify-center py-16">
+  <div class="flex flex-col items-center max-w-2xl gap-6">
+  @if (imageUrl) {
+    <img [src]="imageUrl" [width]="200" [height]="200" alt="Uploaded Image" class="uploaded-image" />
+  } @else {
+    <div class="w-40 h-40"></div>
+  }
+    <input (change)="onFileSelected($event)" class="file-input file-input-bordered w-full max-w-xs" type="file" />
+    <button (click)="onUpload()" [disabled]="!selectedFile" class="btn">Upload</button>
+  </div>
 </div>
-@if (imageUrl) {
-
-  <img [src]="imageUrl" [width]="200" [height]="200" alt="Uploaded Image" class="uploaded-image" />
+@if (showToaster) {
+  <lib-toast [message]="'Uploaded'"></lib-toast>
 }
-
 <router-outlet></router-outlet>
