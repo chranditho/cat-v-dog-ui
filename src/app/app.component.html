@@ -1,5 +1,5 @@
 <lib-navigation />
-<div class="container flex justify-center py-16">
+<div class="container flex justify-center py-16 mx-auto">
   <div class="flex flex-col items-center max-w-2xl gap-6">
   @if (imageUrl) {
     <img [src]="imageUrl" [width]="200" [height]="200" alt="Uploaded Image" class="uploaded-image" />
@@ -11,6 +11,6 @@
   </div>
 </div>
 @if (showToaster) {
-  <lib-toast [message]="'Uploaded'"></lib-toast>
+  <lib-toast [message]="'Uploaded'"/>
 }
-<router-outlet></router-outlet>
+<router-outlet/>
