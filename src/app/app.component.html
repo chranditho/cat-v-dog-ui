@@ -6,8 +6,8 @@
   } @else {
     <div class="w-40 h-40"></div>
   }
-    <input (change)="onFileSelected($event)" class="file-input file-input-bordered w-full max-w-xs" type="file" />
-    <button (click)="onUpload()" [disabled]="!selectedFile" class="btn">Upload</button>
+    <input (change)="onFileSelected($event)"  class="file-input file-input-bordered w-full max-w-xs" type="file" accept="image/*" />
+    <button (click)="onUpload()" [disabled]="!selectedFile" class="btn btn-primary">Upload</button>
   </div>
 </div>
 @if (showToaster) {
