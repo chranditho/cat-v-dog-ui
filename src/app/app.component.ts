@@ -38,7 +38,7 @@ export class AppComponent {
   onUpload() {
     if (this.selectedFile) {
       const formData = new FormData();
-      formData.append('image', this.selectedFile);
+      formData.append('file', this.selectedFile);
       // todo: move http to a service in libs/data-access
       this.http
         .post('https://catordogapi.amanslab.top/catordog', formData)
