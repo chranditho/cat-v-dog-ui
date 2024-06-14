@@ -1,8 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NgOptimizedImage } from '@angular/common';
+import { AsyncPipe, JsonPipe, NgOptimizedImage } from '@angular/common';
 import { NavigationComponent, ToastComponent } from '@cat-v-dog-ui/ui';
-import { HttpClient } from '@angular/common/http';
+import {
+  CatVDogClassifierApiService,
+  PredictionSchema,
+} from '@cat-v-dog-ui/data-access';
+import { Observable } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -11,17 +15,20 @@ import { HttpClient } from '@angular/common/http';
     NgOptimizedImage,
     NavigationComponent,
     ToastComponent,
+    AsyncPipe,
+    JsonPipe,
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
+  api = inject(CatVDogClassifierApiService);
+
+  prediction$: Observable<PredictionSchema> | null = null;
+
   selectedFile: File | null = null;
   imageUrl: string | ArrayBuffer | null = null;
-  toastVisible = false;
-
-  http = inject(HttpClient);
 
   onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -37,22 +44,8 @@ export class AppComponent {
 
   onUpload() {
     if (this.selectedFile) {
-      const formData = new FormData();
-      formData.append('file', this.selectedFile);
-      // todo: move http to a service in libs/data-access
-      this.http
-        .post('https://catordogapi.amanslab.top/catordog', formData)
-        .subscribe((res) => {
-          console.log(res);
-          this.showToast();
-        });
+      this.prediction$ = this.api.getPrediction(this.selectedFile);
+      this.selectedFile = null;
     }
-  }
-
-  private showToast() {
-    this.toastVisible = true;
-    setTimeout(() => {
-      this.toastVisible = false;
-    }, 5000);
   }
 }

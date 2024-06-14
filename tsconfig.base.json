@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@cat-v-dog-ui/data-access": ["libs/data-access/src/index.ts"],
       "@cat-v-dog-ui/ui": ["libs/ui/src/index.ts"]
     }
   },
