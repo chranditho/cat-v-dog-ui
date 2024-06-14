@@ -19,7 +19,7 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   selectedFile: File | null = null;
   imageUrl: string | ArrayBuffer | null = null;
-  showToaster = false;
+  toastVisible = false;
 
   http = inject(HttpClient);
 
@@ -50,9 +50,9 @@ export class AppComponent {
   }
 
   private showToast() {
-    this.showToaster = true;
+    this.toastVisible = true;
     setTimeout(() => {
-      this.showToaster = false;
+      this.toastVisible = false;
     }, 5000);
   }
 }

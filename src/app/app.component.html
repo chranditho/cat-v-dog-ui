@@ -10,7 +10,7 @@
     <button (click)="onUpload()" [disabled]="!selectedFile" class="btn btn-primary">Upload</button>
   </div>
 </div>
-@if (showToaster) {
+@if (toastVisible) {
   <lib-toast [message]="'Uploaded'"/>
 }
 <router-outlet/>
