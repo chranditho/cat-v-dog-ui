@@ -14,6 +14,16 @@
     ],
     "sharedGlobals": []
   },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@vercel/remote-nx",
+      "options": {
+        "cacheableOperations": ["build", "test", "lint", "e2e"],
+        "token": "y38ud3oTcOJ8BLzZZOKI9wOR",
+        "teamId": "team_vESlXKy0PAbQ2uNgtbjtqlws"
+      }
+    }
+  },
   "targetDefaults": {
     "@angular-devkit/build-angular:application": {
       "cache": true,
