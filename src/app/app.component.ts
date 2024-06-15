@@ -1,12 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AsyncPipe, JsonPipe, NgOptimizedImage } from '@angular/common';
-import { NavigationComponent, ToastComponent } from '@cat-v-dog-ui/ui';
-import {
-  CatVDogClassifierApiService,
-  PredictionSchema,
-} from '@cat-v-dog-ui/data-access';
+import { ClassifierService, PredictionSchema } from '@cat-v-dog-ui/data-access';
 import { Observable } from 'rxjs';
+import { NavigationComponent } from '@cat-v-dog-ui/ui';
 
 @Component({
   standalone: true,
@@ -14,16 +11,15 @@ import { Observable } from 'rxjs';
     RouterModule,
     NgOptimizedImage,
     NavigationComponent,
-    ToastComponent,
     AsyncPipe,
     JsonPipe,
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  api = inject(CatVDogClassifierApiService);
+  classifier = inject(ClassifierService);
 
   prediction$: Observable<PredictionSchema> | null = null;
 
@@ -44,7 +40,7 @@ export class AppComponent {
 
   onUpload() {
     if (this.selectedFile) {
-      this.prediction$ = this.api.getPrediction(this.selectedFile);
+      this.prediction$ = this.classifier.classify(this.selectedFile);
       this.selectedFile = null;
     }
   }
