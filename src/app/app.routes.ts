@@ -3,6 +3,7 @@ import {
   ClassifierComponent,
   HowItWorksComponent,
 } from '@cat-v-dog-ui/feature';
+import { StatsPageComponent } from '../stats-page/stats-page.component';
 
 export const appRoutes: Route[] = [
   {
@@ -14,6 +15,11 @@ export const appRoutes: Route[] = [
     path: 'how-it-works',
     pathMatch: 'full',
     component: HowItWorksComponent,
+  },
+  {
+    path: 'stats',
+    pathMatch: 'full',
+    component: StatsPageComponent,
   },
   {
     path: '',

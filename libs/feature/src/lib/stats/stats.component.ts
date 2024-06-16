@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 import { StatComponent } from '@cat-v-dog-ui/ui';
 
 @Component({
-  selector: 'lib-how-it-works',
+  selector: 'lib-stats',
   standalone: true,
   imports: [CommonModule, StatComponent],
-  templateUrl: './how-it-works.component.html',
+  templateUrl: './stats.component.html',
   styles: `
     :host {
-      @apply block prose p-4;
+      @apply block;
     }
   `,
 })
-export class HowItWorksComponent {}
+export class StatsComponent {}
