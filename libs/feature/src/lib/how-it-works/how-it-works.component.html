@@ -1,0 +1,56 @@
+<h1>How it works</h1>
+<p>
+  This is a simple image classifier that uses a pre-trained model to classify images as either a cat or a dog.
+</p>
+<h2>Dataset</h2>
+<p>
+  The dataset used to train the model consists of 25,000 images of cats and dogs.
+  10% of the images were used for validation, and 90% were used for training.
+  The dataset is available on <a href="https://www.kaggle.com/c/dogs-vs-cats/data">Kaggle</a>.
+</p>
+<h2>Model</h2>
+<p>
+  The model used is a pre-trained MobileNetV2 model with weights from ImageNet.
+  The model was fine-tuned on the dataset using transfer learning.
+</p>
+<h2>Training</h2>
+<p>
+  The model was trained using TensorFlow and Keras.
+  The model was trained for 30 epochs with a batch size of around 780.
+  The model was compiled using the Adam optimizer with a learning rate of 0.0001.
+</p>
+<h3>Code</h3>
+<div class="mockup-code">
+  <pre data-prefix="$"><code>model = Sequential([
+    Input(shape=(image_size[0], image_size[1], 3)),
+    Conv2D(32, (3, 3), activation='relu'),
+    BatchNormalization(),
+    MaxPooling2D(2, 2),
+    Conv2D(64, (3, 3), activation='relu'),
+    BatchNormalization(),
+    MaxPooling2D(2, 2),
+    Conv2D(128, (3, 3), activation='relu'),
+    BatchNormalization(),
+    MaxPooling2D(2, 2),
+    Conv2D(128, (3, 3), activation='relu'),
+    BatchNormalization(),
+    MaxPooling2D(2, 2),
+    Flatten(),
+    Dense(512, activation='relu'),
+    Dropout(dropout_rate),
+    Dense(1, activation='sigmoid')
+])
+</code></pre>
+</div>
+<p>
+  The code above shows the model architecture used for training.
+  The model consists of several convolutional layers followed by max pooling layers.
+  The model ends with a dense layer with a sigmoid activation function.
+</p>
+<h4>Explaining the Layers</h4>
+<p>
+  The first layer is an input layer that takes an image of size 224x224 pixels with 3 color channels.
+  The subsequent layers are convolutional layers that learn features from the input image.
+  The max pooling layers reduce the spatial dimensions of the feature maps.
+  The dense layers at the end of the model perform classification based on the learned features.
+</p>

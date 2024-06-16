@@ -5,10 +5,10 @@ import { CommonModule } from '@angular/common';
   selector: 'lib-how-it-works',
   standalone: true,
   imports: [CommonModule],
-  template: `<h1>How it works</h1>`,
+  templateUrl: './how-it-works.component.html',
   styles: `
     :host {
-      @apply block prose;
+      @apply block prose p-4;
     }
   `,
 })
