@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AsyncPipe, JsonPipe, NgOptimizedImage } from '@angular/common';
-import { NavigationComponent } from '@cat-v-dog-ui/ui';
+import { FooterComponent, NavigationComponent } from '@cat-v-dog-ui/ui';
 
 @Component({
   standalone: true,
@@ -11,9 +11,16 @@ import { NavigationComponent } from '@cat-v-dog-ui/ui';
     NavigationComponent,
     AsyncPipe,
     JsonPipe,
+    FooterComponent,
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styles: [
+    `
+      :host {
+        @apply flex flex-col justify-between min-h-dvh;
+      }
+    `,
+  ],
 })
 export class AppComponent {}
