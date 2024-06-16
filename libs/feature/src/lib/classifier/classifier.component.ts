@@ -29,9 +29,7 @@ export class ClassifierComponent {
     if (input.files && input.files.length > 0) {
       this.selectedFile = input.files[0];
       const reader = new FileReader();
-      reader.onload = () => {
-        this.imageUrl = reader.result;
-      };
+      reader.onload = () => (this.imageUrl = reader.result);
       reader.readAsDataURL(this.selectedFile);
     }
   }

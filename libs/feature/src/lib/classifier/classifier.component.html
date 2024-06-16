@@ -1,4 +1,4 @@
-<div class="container py-16 mx-auto">
+<div class="">
   <div class="flex flex-col items-center gap-12">
     <div class="flex flex-col items-center max-w-2xl gap-6">
       @if (imageUrl) {
@@ -8,7 +8,7 @@
       }
       <input (change)="onFileSelected($event)" accept="image/*" class="file-input file-input-bordered w-full max-w-xs"
              type="file" />
-      <button (click)="onUpload()" [disabled]="!selectedFile" class="btn btn-primary">Upload</button>
+      <button (click)="onUpload()" [disabled]="!selectedFile" class="btn btn-primary">Classify</button>
     </div>
     @if (prediction$ | async; as prediction) {
       <span>Your image shows a {{ prediction.result }}!</span>
