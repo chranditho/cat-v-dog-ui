@@ -8,9 +8,9 @@ import { RouterLink } from '@angular/router';
   imports: [CommonModule, RouterLink],
   templateUrl: './navigation.component.html',
   styles: `
-    :host {
-      display: block;
-    }
+      :host {
+          @apply block;
+      }
   `,
 })
 export class NavigationComponent {}
