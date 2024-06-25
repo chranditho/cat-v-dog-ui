@@ -1,13 +1,7 @@
-<div class="navbar bg-base-100 justify-between px-6">
-  <div>
-    <a [routerLink]="'classifier'" class="btn btn-ghost text-xl">Cat v Dog</a>
-    <ul class="menu menu-horizontal px-1">
-      <li><a [routerLink]="'how-it-works'">How it works</a></li>
-      <li><a [routerLink]="'stats'">Stats</a></li>
-    </ul>
-  </div>
-  <div class="space-x-4">
-    <p class="text-warning font-mono">Zeit bis zur Abgabe:</p>
-    <lib-countdown [deadline]="aiDeadline()" class="self-end" />
-  </div>
+<div class="navbar bg-base-100">
+  <a [routerLink]="'classifier'" class="btn btn-ghost text-xl">Cat v Dog</a>
+  <ul class="menu menu-horizontal px-1">
+    <li><a [routerLink]="'how-it-works'">How it works</a></li>
+    <li><a [routerLink]="'stats'">Stats</a></li>
+  </ul>
 </div>
